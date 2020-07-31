@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+    Happyenings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+  <ion-card *ngFor="let news of newsArr">
+    <img class="mt-3" style="width: 27rem;" src={{news.image}}>
+    <ion-card-header>
+      <ion-card-title>{{news.title}}</ion-card-title>
+      <ion-card-subtitle>{{news.publishedAt | date:'medium'}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{news.description}}
+     <br>
+     <br>
+      <p>Full article: <a href={{news.url}}>Click Here</a></p>
+    </ion-card-content>
+   
+  </ion-card>
+</ion-content>
+
+
+

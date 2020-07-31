@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Happyenings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card *ngFor="let tweet of tweetArr">
+    <ion-card-content>
+      <p class="mr-1 " style="word-spacing: 3px;"><img src={{tweet.user.profile_image_url}} class="rounded mr-2"
+          width="25">{{tweet.user.name}} <b style="color: blueviolet;">@{{tweet.user.screen_name}}</b></p>
+      <p class="mt-2" style="margin-left: 2rem;">{{tweet.text }}</p>
+      <p style="color: #1da0f2;margin-left: 2rem;">{{tweet.created_at | date:'medium'}}</p>
+      <br>
+      <p *ngIf="tweet.entities.urls.length != 0" style="margin-left: 2rem;">Full tweet : <a
+        href={{tweet.entities.urls[0].url}}>{{tweet.entities.urls[0].url}}</a> </p>
+      <br>
+      <br>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

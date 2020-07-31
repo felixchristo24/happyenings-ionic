@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Happyenings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card *ngFor="let restaurant of restaurantsArr">
+    <ion-card-content>
+      <div class="row">
+        <div class="col-10">
+          <p *ngIf="restaurant.is_delivering_now==1" class="mr-1 " style="word-spacing: 3px;"><img
+              src={{restaurant.thumb}} class="rounded mr-2" style="width:36px;height:26px">{{restaurant.name}} <span
+              class="fa fa-star checked mr-2">{{restaurant.user_rating.aggregate_rating}}</span> <i
+              style="color:green;font-size: 8px;">(Delivery Open)</i> </p>
+          <p *ngIf="restaurant.is_delivering_now==0" class="mr-1 " style="word-spacing: 3px;"><img
+              src={{restaurant.thumb}} class="rounded mr-2" style="width:36px;height:26px">{{restaurant.name}} <span
+              class="fa fa-star checked mr-2">{{restaurant.user_rating.aggregate_rating}}</span> <i
+              style="color:red;font-size: 8px;">(Delivery Closed)</i> </p>
+        </div>
+        <div class="col-2">
+          <input type="image" style="float: right;"
+            (click)="showMap(restaurant.location.latitude,restaurant.location.longitude)" class="mr-2"
+            src="../assets/direction.png">
+        </div>
+      </div>
+      <p class="mt-2" >Cuisines: {{restaurant.cuisines}}</p>
+      <p class="mt-2" >Menu & Order : <a href={{restaurant.menu_url}}>Click Here</a></p>
+      <br>
+      <br>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
